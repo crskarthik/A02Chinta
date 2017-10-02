@@ -31,15 +31,15 @@ QUnit.test("Here's a test that should always pass", function (assert) {
 });
 
 QUnit.test('Testing getV2 function with several sets of inputs', function (assert) {
-    assert.equal(getV2(50000, 400), 141, 'Tested with two normal weight and flight model');
-    assert.equal(getV2(60000, 700), 142, 'Tested with two relatively small positive numbers');
-    assert.equal(getV2(62000, 800), 149, 'Tested with two large positive numbers. Any arguments greater than 100 will be set to 100.');
+    assert.equal(getV2(50000, 400), 141, 'Tested with two normal weight and flight model 400');
+    assert.equal(getV2(60000, 700), 142, 'Tested with two normal weight and flight model 400');
+    assert.equal(getV2(62000, 800), 149, 'Tested with two normal weight and flight model 400');
         //throws( block                                    [, expected ] [, message ] ) 
     assert.throws(function () { getV2(null,null); }, /The given argument is not a number/, 'Passing in null correctly raises an Error');
         //throws( block                                    [, expected ] [, message ] ) 
     assert.throws(function () { getV2("Christine","Christine"); }, /The given argument is not a number/, 'Passing in a string correctly raises an Error');
      //throws( block                                    [, expected ] [, message ] ) 
-     assert.throws(function () { getV2(30000,800); }, /The given argument is not a valid weight to flight combination/, 'Passing in a string correctly raises an Error');
+     assert.throws(function () { getV2(30000,800); }, /The given argument is not a valid weight to flight combination/, 'Passing in a extreme combinations for fight data raises an Error');
      
 });
 
