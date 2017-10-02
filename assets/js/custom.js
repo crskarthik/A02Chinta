@@ -43,13 +43,13 @@ function getV2(weight,type){
     let v2,flaps;
     let maxLandingWeight,flagPos=0;
     console.log(weight+" "+type);
-if(typeof weight!='number'||typeof type!='number'||weight==null||type==null)
-{
-    throw Error('The given argument is not a number');
-    error = true;
-    flagPos=1;
-    alert("Please Enter a valid input");
-}
+// if(typeof weight!='number'||typeof type!='number'||weight==null||type==null)
+// {
+//     throw Error('The given argument is not a number');
+//     error = true;
+//     flagPos=1;
+//     alert("Please Enter a valid input");
+// }
 if(!error){
     weight = parseFloat(weight);
     weightinTons = weight/907.18474
