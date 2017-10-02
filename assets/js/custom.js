@@ -33,6 +33,75 @@ function calc(){
     document.getElementById('Final').innerText = totalPrice;
 }
 
+function intoTons(weightInKilos){
+weightInKilos = parseFloat(weightInKilos);
+    $("#inTons").html(Math.round(weightInKilos/907.18474)+"Tons");
+}
+
+function getV2(weight,type){
+    let error=false;
+    let v2,flaps;
+    let maxLandingWeight,flagPos=0;
+    
+if(typeof weight!='number'||typeof type!='number'||weight==null||type==null)
+{
+    throw Error('The given argument is not a number');
+    error = true;
+    flagPos=1;
+    alert("Please Enter a valid input");
+}
+if(!error){
+    weight = parseFloat(weight);
+    weightinTons = weight/907.18474
+    type = parseInt(type);
+
+    switch (type) {
+        case 400:
+        if(weightinTons>33.650)
+        {  
+            v2 = 100+(weightinTons-15);
+            maxLandingWeight= 56240;
+            flaps=5;
+        }else{error=true;}
+            break;
+        case 700:
+        if(weightinTons>37.648&&weightinTons<70.080)
+        {  
+            v2 = 100+(weightinTons-25);
+            maxLandingWeight=58604;
+        flaps=2;
+        }else{error=true;}
+            break;
+        case 800:
+        if(weightinTons>41.145&&weightinTons<78.245)
+        {  
+            v2 = 100+(weightinTons-20);
+            maxLandingWeight = 65317;
+        flaps=3;
+        }else{error=true;}   
+            break;
+        default:
+            v2 = 0;
+            error=true;
+            break;
+    }
+}
+    if(error==false){
+    $('#TSpeed').text(Math.ceil(v2)+"Knots");
+    $('#TWeight').text(weight+"Kilos");
+    $('#TFlaps').text(flaps);
+    $('#TLW').text(maxLandingWeight+"Kilos");
+    }else if(error==true&&flagPos==0){
+        throw Error('The given argument is not a valid weight to flight combination');
+        alert("Please Enter a valid input");
+    }
+    else if(error==true&&flagPos==1){
+        throw Error('The given argument is not a number');
+        alert("Please Enter a valid input");
+    }
+    return Math.ceil(v2);
+}
+
 $(function()
 {
     $(document).on('click', '.btn-add', function(e)
