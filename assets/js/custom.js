@@ -42,7 +42,7 @@ function getV2(weight,type){
     let error=false;
     let v2,flaps;
     let maxLandingWeight,flagPos=0;
-    
+    console.log(weight+" "+type);
 if(typeof weight!='number'||typeof type!='number'||weight==null||type==null)
 {
     throw Error('The given argument is not a number');
